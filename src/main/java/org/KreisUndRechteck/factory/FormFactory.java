@@ -1,19 +1,19 @@
 package org.KreisUndRechteck.factory;
 
-import org.KreisUndRechteck.entity.Dreieck;
-import org.KreisUndRechteck.entity.Form;
-import org.KreisUndRechteck.entity.Kreis;
-import org.KreisUndRechteck.entity.Rechteck;
+import org.KreisUndRechteck.entity.Form3D;
+import org.KreisUndRechteck.entity.Kugel;
+import org.KreisUndRechteck.entity.Quader;
+import org.KreisUndRechteck.entity.Tetraeder;
 
 public class FormFactory {
-	public static Form erstelleForm(String formTyp, float radius, float hoehe, float breite) {
+	public static Form3D erstelleForm3D(String formTyp, float... parameter) {
 		switch (formTyp) {
-		case "Kreis":
-			return new Kreis(radius);
-		case "Rechteck":
-			return new Rechteck(hoehe, breite);
-		case "Dreieck":
-			return new Dreieck(breite, radius);
+		case "Kugel":
+			return new Kugel(parameter[0]);
+		case "Quader":
+			return new Quader(parameter[0], parameter[1], parameter[2]);
+		case "Tetraeder":
+			return new Tetraeder(parameter[0]);
 		default:
 			throw new IllegalArgumentException("Ungueltiger Formtyp");
 		}
