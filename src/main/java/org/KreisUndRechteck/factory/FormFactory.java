@@ -15,8 +15,7 @@ public class FormFactory {
 		case "Dreieck":
 			return new Dreieck(breite, radius);
 		default:
-			System.out.println("Form nicht bekannt");
-			return null;
+			throw new IllegalArgumentException("Ungueltiger Formtyp");
 		}
 	}
 }
