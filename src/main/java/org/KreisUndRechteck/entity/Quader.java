@@ -1,12 +1,14 @@
 package org.KreisUndRechteck.entity;
 
-public class Quader extends Form3D {
+import org.KreisUndRechteck.enums.FormTyp;
+
+public class Quader extends Figur3D {
     private float laenge;
     private float breite;
     private float hoehe;
 
     public Quader(float laenge, float breite, float hoehe) {
-        super("Quader");
+        super(FormTyp.Quader);
         this.laenge = laenge;
         this.breite = breite;
         this.hoehe = hoehe;

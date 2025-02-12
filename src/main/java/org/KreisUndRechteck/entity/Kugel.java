@@ -1,10 +1,12 @@
 package org.KreisUndRechteck.entity;
 
-public class Kugel extends Form3D {
+import org.KreisUndRechteck.enums.FormTyp;
+
+public class Kugel extends Figur3D {
     private float radius;
 
     public Kugel(float radius) {
-        super("Kugel");
+        super(FormTyp.Kugel);
         this.radius = radius;
     }
 

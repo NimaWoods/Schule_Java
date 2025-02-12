@@ -1,27 +1,43 @@
 package org.KreisUndRechteck;
 
-import org.KreisUndRechteck.entity.Form3D;
+import static org.KreisUndRechteck.enums.FormTyp.*;
+
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.KreisUndRechteck.entity.Figur3D;
 import org.KreisUndRechteck.factory.FormFactory;
+import org.KreisUndRechteck.utils.CSVUtil;
 
 public class Main {
 	public static void main(String[] args) {
-		Form3D kugel = FormFactory.erstelleForm3D("Kugel", 5);
-		Form3D quader = FormFactory.erstelleForm3D("Quader", 5, 10, 15);
-		Form3D tetraeder = FormFactory.erstelleForm3D("Tetraeder", 5);
+		List<Figur3D> figuren = new ArrayList<>();
+
+		Figur3D kugel = FormFactory.erstelleForm3D(Kugel, 5, 10, 15);
+		Figur3D quader = FormFactory.erstelleForm3D(Quader, 5, 10, 15);
+		Figur3D tetraeder = FormFactory.erstelleForm3D(Tetraeder, 5, 10, 15);
 
 		kugel.berechneVolumen();
 		kugel.berechneOberflaeche();
-		System.out.println("Kugel-Volumen: " + kugel.getVolumen());
-		System.out.println("Kugel-Oberfläche: " + kugel.getOberflaeche());
 
 		quader.berechneVolumen();
 		quader.berechneOberflaeche();
-		System.out.println("Quader-Volumen: " + quader.getVolumen());
-		System.out.println("Quader-Oberfläche: " + quader.getOberflaeche());
 
 		tetraeder.berechneVolumen();
 		tetraeder.berechneOberflaeche();
-		System.out.println("Tetraeder-Volumen: " + tetraeder.getVolumen());
-		System.out.println("Tetraeder-Oberfläche: " + tetraeder.getOberflaeche());
+
+		figuren.add(kugel);
+		figuren.add(quader);
+		figuren.add(tetraeder);
+
+		CSVUtil.writeAll(figuren, Path.of("figuren.csv"));
+		List<Figur3D> geleseneFiguren = CSVUtil.readALl(Path.of("figuren.csv"));
+
+		for(Figur3D f: geleseneFiguren) {
+			System.out.println( "-Volumen: " + f.getVolumen());
+			System.out.println("Kugel-Oberfläche: " + f.getOberflaeche());
+		}
+
 	}
 }

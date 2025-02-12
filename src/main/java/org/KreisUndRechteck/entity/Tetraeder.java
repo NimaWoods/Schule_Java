@@ -1,10 +1,12 @@
 package org.KreisUndRechteck.entity;
 
-public class Tetraeder extends Form3D {
+import org.KreisUndRechteck.enums.FormTyp;
+
+public class Tetraeder extends Figur3D {
 	private float seite;
 
 	public Tetraeder(float seite) {
-		super("Tetraeder");
+		super(FormTyp.Tetraeder);
 		this.seite = seite;
 	}
 
