@@ -5,37 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93f48667-fe3f-4695-855e-2d2a093e98e5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/KreisUndRechteck.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/enums/FormTyp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/figuren.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/KreisUndRechteck.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/entity/Figur3D.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/entity/Kugel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/entity/Quader.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/entity/Tetraeder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/enums/FormTyp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/factory/FormFactory$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/factory/FormFactory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/KreisUndRechteck/org/KreisUndRechteck/utils/CSVUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/CSVUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/Dreieck.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/Form3D.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/Figur3D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/Kugel.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/Kugel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/Quader.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/Quader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/entity/Tetraeder.java" beforeDir="false" afterPath="$PROJECT_DIR$/entity/Tetraeder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/factory/FormFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/factory/FormFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,54 +22,54 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "NimaWoods"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NimaWoods&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/NimaWoods/Schule_Java.git",
-    "accountId": "1d3f62b4-e3a4-4ef1-90d8-02f1960a70f9"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/NimaWoods/Schule_Java.git&quot;,
+    &quot;accountId&quot;: &quot;1d3f62b4-e3a4-4ef1-90d8-02f1960a70f9&quot;
   }
-}]]></component>
+}</component>
   <component name="GoVcsConfiguration">
     <option name="GO_FMT" value="false" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2sw1Lte8Jgm5jFRNaYaZwy8PXPC" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
     <option name="showScratchesAndConsoles" value="false" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "Application.Main.executor": "Debug",
-    "Application.Start.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "git-widget-placeholder": "master",
-    "go.import.settings.migrated": "true",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/nikla/IdeaProjects/Schule/src/main/java/org/KreisUndRechteck",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Start.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/nikla/IdeaProjects/Schule/src/main/java/org/KreisUndRechteck&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Start" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-17" />
@@ -127,7 +97,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1739351770416</updated>
-      <workItem from="1739351771512" duration="3723000" />
+      <workItem from="1739351771512" duration="4128000" />
+      <workItem from="1739356635798" duration="198000" />
+      <workItem from="1739432336319" duration="13000" />
+      <workItem from="1739437298429" duration="62000" />
     </task>
     <task id="LOCAL-00001" summary="FormFactory">
       <option name="closed" value="true" />
@@ -153,7 +126,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739352640664</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Datenspeicherung">
+      <option name="closed" value="true" />
+      <created>1739355658356</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739355658356</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +142,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="FormFactory" />
-    <option name="LAST_COMMIT_MESSAGE" value="FormFactory" />
+    <MESSAGE value="Datenspeicherung" />
+    <option name="LAST_COMMIT_MESSAGE" value="Datenspeicherung" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>
