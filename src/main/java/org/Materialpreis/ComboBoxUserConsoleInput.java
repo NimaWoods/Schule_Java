@@ -1,3 +1,5 @@
+package org.Materialpreis;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,7 +12,7 @@ public class ComboBoxUserConsoleInput {
 		while (choice < 1 || choice > options.size()) {
 			System.out.println(message);
 			for (int i = 0; i < options.size(); i++) {
-				System.out.println((i + 1) + ") " + options.get(i));
+				System.out.println((i + 1) + ") " + options.get(i).toString());
 			}
 			System.out.print("Bitte wählen (1-" + options.size() + "): ");
 

@@ -1,3 +1,5 @@
+package org.Materialpreis;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -6,14 +8,21 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) {
+		start();
+	}
 
-		List<Material> materialsFuellung = getMaterial(new File("Materialpreise Fuellung.csv"));
-		List<Material> materialsOberflaechen = getMaterial(new File("Materialpreise Oberflaechen.csv"));
+	public static void start() {
+		List<Material> materialsFuellung = null;
+		List<Material> materialsOberflaechen = null;
+
+		materialsFuellung = getMaterial(new File("Materialpreise Fuellung.csv"), "m²");
+		materialsOberflaechen = getMaterial(new File("Materialpreise Oberflaechen.csv"), "m³");
 
 		List<Material> materials = new ArrayList<>();
 		if (materialsFuellung != null && materialsOberflaechen != null) {
@@ -26,23 +35,28 @@ public class Main {
 		Material material = ComboBoxUserConsoleInput.getUserSelection("Wähle ein Material: ", materials);
 
 		Scanner scanner = new Scanner(System.in);
-		double price = 0;
-		if (materialsFuellung.contains(material)) {
-			System.out.print("Bitte gib die Fläche der Füllung in m² ein: ");
-			Double input = scanner.nextDouble();
 
-			price = calculatePrice(material, input, true);
+		System.out.print("Bitte gib die benötigte Menge in " + material.getUnit() + " ein: ");
+
+		double amount = scanner.nextDouble();
+		double price = calculatePrice(material, amount);
+
+		scanner.nextLine(); // Consume newline left-over
+
+		System.out.println(" ");
+		System.out.println("Der Gesamtpreis für " + amount + material.getUnit() + " " + material.getName() + " beträgt: " + price + "€");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.print("Möchtest du eine weitere Berechnung durchführen? (y/n)");
+
+		if (!scanner.nextLine().equalsIgnoreCase("n")) {
+			start();
 		} else {
-			System.out.print("Bitte gib das Volumen der Oberfläche in m³ ein: ");
-			Double input = scanner.nextDouble();
-
-			price = calculatePrice(material, input, false);
+			System.out.println("Programm beendet.");
 		}
-
-		System.out.println("Der Preis beträgt: " + price + "€");
 	}
 
-	private static List<Material> getMaterial(File file) {
+	private static List<Material> getMaterial(File file, String unit) {
 		try {
 			List<List<String>> records = readCSV(file);
 
@@ -50,9 +64,9 @@ public class Main {
 
 			for (List<String> record : records) {
 				String name = record.get(0);
-				double price = Double.parseDouble(record.get(1));
+				double price = Double.parseDouble(record.get(1).replace(",", "."));
 
-				materials.add(new Material(name, price));
+				materials.add(new Material(name, price, unit));
 			}
 
 			return materials;
@@ -76,8 +90,8 @@ public class Main {
 		return records;
 	}
 
-	private static double calculatePrice(Material material, double doubleInput, boolean isFuellung) {
-		if (isFuellung) {
+	private static double calculatePrice(Material material, double doubleInput) {
+		if (Objects.equals(material.getUnit(), "m²")) {
 			return material.getPrice() * doubleInput;
 		} else {
 			return material.getPrice() * doubleInput * 2;
