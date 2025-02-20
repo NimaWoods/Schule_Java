@@ -10,11 +10,16 @@ public class ComboBoxUserConsoleInput {
 		int choice = -1;
 
 		while (choice < 1 || choice > options.size()) {
+			System.out.println(" ");
 			System.out.println(message);
-			for (int i = 0; i < options.size(); i++) {
-				System.out.println((i + 1) + ") " + options.get(i).toString());
+			if (!options.isEmpty()) {
+				for (int i = 0; i < options.size(); i++) {
+					System.out.println((i + 1) + ") " + options.get(i).toString());
+				}
+				System.out.print("Bitte wählen (1-" + options.size() + "): ");
+			} else {
+				System.out.println("Keine Optionen verfügbar.");
 			}
-			System.out.print("Bitte wählen (1-" + options.size() + "): ");
 
 			if (scanner.hasNextInt()) {
 				choice = scanner.nextInt();

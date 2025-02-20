@@ -1,0 +1,119 @@
+Index: Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.BufferedReader;\r\nimport java.io.File;\r\nimport java.io.FileReader;\r\nimport java.io.IOException;\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.Comparator;\r\nimport java.util.List;\r\nimport java.util.Scanner;\r\n\r\npublic class Main {\r\n\r\n\tpublic static void main(String[] args) {\r\n\r\n\t\tList<Material> materialsFuellung = getMaterial(new File(\"Materialpreise Fuellung.csv\"));\r\n\t\tList<Material> materialsOberflaechen = getMaterial(new File(\"Materialpreise Oberflaechen.csv\"));\r\n\r\n\t\tList<Material> materials = new ArrayList<>();\r\n\t\tif (materialsFuellung != null && materialsOberflaechen != null) {\r\n\t\t\tmaterials.addAll(materialsFuellung);\r\n\t\t\tmaterials.addAll(materialsOberflaechen);\r\n\t\t}\r\n\r\n\t\tmaterials.sort(Comparator.comparing(Material::getName));\r\n\r\n\t\tMaterial material = ComboBoxUserConsoleInput.getUserSelection(\"Wähle ein Material: \", materials);\r\n\r\n\t\tScanner scanner = new Scanner(System.in);\r\n\t\tdouble price = 0;\r\n\t\tif (materialsFuellung.contains(material)) {\r\n\t\t\tSystem.out.print(\"Bitte gib die Fläche der Füllung in m² ein: \");\r\n\t\t\tDouble input = scanner.nextDouble();\r\n\r\n\t\t\tprice = calculatePrice(material, input, true);\r\n\t\t} else {\r\n\t\t\tSystem.out.print(\"Bitte gib das Volumen der Oberfläche in m³ ein: \");\r\n\t\t\tDouble input = scanner.nextDouble();\r\n\r\n\t\t\tprice = calculatePrice(material, input, false);\r\n\t\t}\r\n\r\n\t\tSystem.out.println(\"Der Preis beträgt: \" + price + \"€\");\r\n\t}\r\n\r\n\tprivate static List<Material> getMaterial(File file) {\r\n\t\ttry {\r\n\t\t\tList<List<String>> records = readCSV(file);\r\n\r\n\t\t\tList<Material> materials = new ArrayList<>();\r\n\r\n\t\t\tfor (List<String> record : records) {\r\n\t\t\t\tString name = record.get(0);\r\n\t\t\t\tdouble price = Double.parseDouble(record.get(1));\r\n\r\n\t\t\t\tmaterials.add(new Material(name, price));\r\n\t\t\t}\r\n\r\n\t\t\treturn materials;\r\n\t\t} catch (Exception e) {\r\n\t\t\te.printStackTrace();\r\n\t\t}\r\n\t\treturn null;\r\n\t}\r\n\r\n\tprivate static List<List<String>> readCSV(File file) {\r\n\t\tList<List<String>> records = new ArrayList<>();\r\n\t\ttry (BufferedReader br = new BufferedReader(new FileReader(file))) {\r\n\t\t\tString line;\r\n\t\t\twhile ((line = br.readLine()) != null) {\r\n\t\t\t\tString[] values = line.split(\";\");\r\n\t\t\t\trecords.add(Arrays.asList(values));\r\n\t\t\t}\r\n\t\t} catch (IOException e) {\r\n\t\t\te.printStackTrace();\r\n\t\t}\r\n\t\treturn records;\r\n\t}\r\n\r\n\tprivate static double calculatePrice(Material material, double doubleInput, boolean isFuellung) {\r\n\t\tif (isFuellung) {\r\n\t\t\treturn material.getPrice() * doubleInput;\r\n\t\t} else {\r\n\t\t\treturn material.getPrice() * doubleInput * 2;\r\n\t\t}\r\n\t}\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Main.java b/Main.java
+--- a/Main.java	(revision 78e9d9f8391076ee3ffdef1faff623e1da02722e)
++++ b/Main.java	(date 1740041959542)
+@@ -12,14 +12,12 @@
+ 
+ 	public static void main(String[] args) {
+ 
+-		List<Material> materialsFuellung = getMaterial(new File("Materialpreise Fuellung.csv"));
+-		List<Material> materialsOberflaechen = getMaterial(new File("Materialpreise Oberflaechen.csv"));
++		List<Material> materialsFuellung = MaterialFactory.createMaterialsFromCSV(new File("Materialpreise Fuellung.csv"));
++		List<Material> materialsOberflaechen = MaterialFactory.createMaterialsFromCSV(new File("Materialpreise Oberflaechen.csv"));
+ 
+ 		List<Material> materials = new ArrayList<>();
+-		if (materialsFuellung != null && materialsOberflaechen != null) {
+-			materials.addAll(materialsFuellung);
+-			materials.addAll(materialsOberflaechen);
+-		}
++		materials.addAll(materialsFuellung);
++		materials.addAll(materialsOberflaechen);
+ 
+ 		materials.sort(Comparator.comparing(Material::getName));
+ 
+@@ -42,40 +40,6 @@
+ 		System.out.println("Der Preis beträgt: " + price + "€");
+ 	}
+ 
+-	private static List<Material> getMaterial(File file) {
+-		try {
+-			List<List<String>> records = readCSV(file);
+-
+-			List<Material> materials = new ArrayList<>();
+-
+-			for (List<String> record : records) {
+-				String name = record.get(0);
+-				double price = Double.parseDouble(record.get(1));
+-
+-				materials.add(new Material(name, price));
+-			}
+-
+-			return materials;
+-		} catch (Exception e) {
+-			e.printStackTrace();
+-		}
+-		return null;
+-	}
+-
+-	private static List<List<String>> readCSV(File file) {
+-		List<List<String>> records = new ArrayList<>();
+-		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+-			String line;
+-			while ((line = br.readLine()) != null) {
+-				String[] values = line.split(";");
+-				records.add(Arrays.asList(values));
+-			}
+-		} catch (IOException e) {
+-			e.printStackTrace();
+-		}
+-		return records;
+-	}
+-
+ 	private static double calculatePrice(Material material, double doubleInput, boolean isFuellung) {
+ 		if (isFuellung) {
+ 			return material.getPrice() * doubleInput;
+Index: MaterialFactory.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/MaterialFactory.java b/MaterialFactory.java
+new file mode 100644
+--- /dev/null	(date 1740042183372)
++++ b/MaterialFactory.java	(date 1740042183372)
+@@ -0,0 +1,39 @@
++import java.io.*;
++import java.util.ArrayList;
++import java.util.List;
++
++public class MaterialFactory {
++
++	public static List<Material> createMaterialsFromCSV(File file) {
++		List<Material> materials = new ArrayList<>();
++		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
++			String line;
++			while ((line = br.readLine()) != null) {
++				String[] values = line.split(";");
++				if (values.length >= 2) {
++					String name = values[0].trim();
++					try {
++						double price = Double.parseDouble(values[1].trim());
++						materials.add(new Material(name, price));
++					} catch (NumberFormatException e) {
++						System.err.println("Fehler beim Parsen des Preises: " + values[1]);
++					}
++				}
++			}
++		} catch (IOException e) {
++			e.printStackTrace();
++		}
++		return materials;
++	}
++
++	public static void updateAndSaveCSV(File file, List<Material> materials) {
++		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))) {
++			for (Material material : materials) {
++				bw.write(material.getName() + ";" + material.getPrice());
++				bw.newLine();
++			}
++		} catch (IOException e) {
++			e.printStackTrace();
++		}
++	}
++}

@@ -5,6 +5,8 @@ public class Material {
 	private String name;
 	private double price;
 	private String unit;
+	private int amount;
+	private int total;
 	
 	public Material(String name, double price, String unit) {
 		setName(name);
@@ -34,6 +36,22 @@ public class Material {
 
 	public void setUnit(String unit) {
 		this.unit = unit;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
 	@Override

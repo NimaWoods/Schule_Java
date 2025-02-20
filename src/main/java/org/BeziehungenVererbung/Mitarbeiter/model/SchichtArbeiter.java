@@ -3,6 +3,7 @@ package org.BeziehungenVererbung.Mitarbeiter.model;
 public class SchichtArbeiter extends Mitarbeiter {
     private double stundenSatz;
     private int anzahlStunden;
+    private String führerscheinKlasse;
 
     public SchichtArbeiter(int id, String name, double stundenSatz) {
         super(id, name);
@@ -22,6 +23,30 @@ public class SchichtArbeiter extends Mitarbeiter {
             throw new IllegalArgumentException("Gearbeitete Stunden müssen positiv sein.");
         }
         this.anzahlStunden += stunden;
+    }
+
+    public double getStundenSatz() {
+        return stundenSatz;
+    }
+
+    public void setStundenSatz(double stundenSatz) {
+        this.stundenSatz = stundenSatz;
+    }
+
+    public int getAnzahlStunden() {
+        return anzahlStunden;
+    }
+
+    public void setAnzahlStunden(int anzahlStunden) {
+        this.anzahlStunden = anzahlStunden;
+    }
+
+    public String getFührerscheinKlasse() {
+        return führerscheinKlasse;
+    }
+
+    public void setFührerscheinKlasse(String führerscheinKlasse) {
+        this.führerscheinKlasse = führerscheinKlasse;
     }
 
     @Override
