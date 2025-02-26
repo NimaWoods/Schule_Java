@@ -47,13 +47,12 @@ public class MaterialFactory {
 
 	public static void saveOrders(List<Material> materials) {
 		File file = new File("Bestellungen.csv");
-		System.out.println("Speichere Datei unter: " + file.getAbsolutePath());
+		LOGGER.info("Speichere Datei unter: " + file.getAbsolutePath());
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file, true))) {
 			for (Material material : materials) {
 				String line = material.getName() + ";" + material.getPrice() + ";" + material.getUnit() + ";"
 						+ material.getAmount() + ";" + material.getTotal();
-				LOGGER.info("Speichere Bestellung: " + line);
 				bw.write(line);
 				bw.newLine();
 			}
