@@ -22,6 +22,8 @@ public class MainView extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setExtendedState(MAXIMIZED_BOTH);
         setSize(400, 300);
+
+        setVisible(true);
     }
 
     private void addComponents() {
