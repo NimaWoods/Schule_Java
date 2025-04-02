@@ -31,12 +31,4 @@ public class MainView extends JFrame {
         add(aktuelleBedingungen);
         add(wetterVorhersage);
     }
-
-    @Override
-    public void update(double temperatur, double feuchtigkeit, double luftdruck) {
-        // Update the labels with the new weather data
-        temperaturLabel.setText("Temperatur: " + temperatur + " °C");
-        feuchtigkeitLabel.setText("Feuchtigkeit: " + feuchtigkeit + " %");
-        luftdruckLabel.setText("Luftdruck: " + luftdruck + " hPa");
-    }
 }
