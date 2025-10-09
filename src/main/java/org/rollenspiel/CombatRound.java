@@ -2,25 +2,18 @@ package org.rollenspiel;
 
 import java.util.List;
 
-/**
- * Combat round logic for the role-playing game.
- */
+import org.rollenspiel.entity.Character;
+import org.rollenspiel.entity.PC;
+
 public class CombatRound {
     
-    /**
-     * Execute a combat round between players and enemies.
-     * @param players The list of player characters
-     * @param enemies The list of enemy characters
-     */
-    public void executeCombatRound(List<PC> players, List<Character> enemies) {
+    public void executeCombatRound(List<PC> players, List<org.rollenspiel.entity.Character> enemies) {
         System.out.println("\n===== COMBAT ROUND BEGINS =====");
-        
-        // Players attack enemies
-        System.out.println("\n----- PLAYERS ATTACK -----");
+
+		System.out.println("\n----- PLAYERS ATTACK -----");
         for (PC player : players) {
             if (player.isAlive()) {
-                // Find a living enemy to attack
-                Character target = findLivingTarget(enemies);
+				org.rollenspiel.entity.Character target = findLivingTarget(enemies);
                 if (target != null) {
                     executeAttack(player, target);
                 } else {
@@ -29,13 +22,11 @@ public class CombatRound {
                 }
             }
         }
-        
-        // Enemies attack players
-        System.out.println("\n----- ENEMIES ATTACK -----");
-        for (Character enemy : enemies) {
+
+		System.out.println("\n----- ENEMIES ATTACK -----");
+        for (org.rollenspiel.entity.Character enemy : enemies) {
             if (enemy.isAlive()) {
-                // Find a living player to attack
-                PC target = findLivingPlayerTarget(players);
+				PC target = findLivingPlayerTarget(players);
                 if (target != null) {
                     executeAttack(enemy, target);
                 } else {
@@ -44,9 +35,8 @@ public class CombatRound {
                 }
             }
         }
-        
-        // Option to change weapons
-        System.out.println("\n----- WEAPON CHANGE PHASE -----");
+
+		System.out.println("\n----- WEAPON CHANGE PHASE -----");
         for (PC player : players) {
             if (player.isAlive()) {
                 offerWeaponChange(player);
@@ -54,26 +44,20 @@ public class CombatRound {
         }
         
         System.out.println("\n===== COMBAT ROUND ENDS =====");
-        
-        // Display status of all characters
-        System.out.println("\n----- STATUS AFTER COMBAT -----");
+
+		System.out.println("\n----- STATUS AFTER COMBAT -----");
         System.out.println("Players:");
         for (PC player : players) {
             System.out.println(player);
         }
         
         System.out.println("\nEnemies:");
-        for (Character enemy : enemies) {
+        for (org.rollenspiel.entity.Character enemy : enemies) {
             System.out.println(enemy);
         }
     }
     
-    /**
-     * Execute an attack between an attacker and a defender.
-     * @param attacker The attacking character
-     * @param defender The defending character
-     */
-    private void executeAttack(Character attacker, Character defender) {
+    private void executeAttack(org.rollenspiel.entity.Character attacker, org.rollenspiel.entity.Character defender) {
         System.out.println("\n" + attacker.getName() + " attacks " + defender.getName());
         
         int attackValue = attacker.attack();
@@ -95,12 +79,7 @@ public class CombatRound {
         }
     }
     
-    /**
-     * Find a living target among the given characters.
-     * @param targets The list of potential targets
-     * @return A living target, or null if none are alive
-     */
-    private Character findLivingTarget(List<Character> targets) {
+    private org.rollenspiel.entity.Character findLivingTarget(List<org.rollenspiel.entity.Character> targets) {
         for (Character target : targets) {
             if (target.isAlive()) {
                 return target;
@@ -109,11 +88,6 @@ public class CombatRound {
         return null;
     }
     
-    /**
-     * Find a living player target among the given players.
-     * @param targets The list of potential player targets
-     * @return A living player target, or null if none are alive
-     */
     private PC findLivingPlayerTarget(List<PC> targets) {
         for (PC target : targets) {
             if (target.isAlive()) {
@@ -123,33 +97,10 @@ public class CombatRound {
         return null;
     }
     
-    /**
-     * Offer the player the option to change weapons.
-     * @param player The player character
-     */
     private void offerWeaponChange(PC player) {
         System.out.println("\n" + player.getName() + ", do you want to change your weapon? (y/n)");
-        // For automated testing, we'll just print the inventory and not actually wait for input
-        player.showInventory();
+		player.showInventory();
         System.out.println("Current weapon: " + player.weaponStrategy);
-        
-        // In a real game, you would uncomment this code to allow user input
-        /*
-        String response = scanner.nextLine().trim().toLowerCase();
-        if (response.equals("y") || response.equals("yes")) {
-            player.showInventory();
-            System.out.println("Enter the number of the weapon you want to use:");
-            try {
-                int weaponIndex = Integer.parseInt(scanner.nextLine().trim()) - 1;
-                if (weaponIndex >= 0 && weaponIndex < player.getInventory().size()) {
-                    player.changeWeapon(player.getInventory().get(weaponIndex));
-                } else {
-                    System.out.println("Invalid weapon number!");
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid input!");
-            }
-        }
-        */
-    }
+
+	}
 }

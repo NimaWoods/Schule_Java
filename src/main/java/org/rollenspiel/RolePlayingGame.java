@@ -3,71 +3,68 @@ package org.rollenspiel;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Main class for the role-playing game.
- */
+import org.rollenspiel.entity.Character;
+import org.rollenspiel.entity.Fighter;
+import org.rollenspiel.entity.King;
+import org.rollenspiel.entity.Knight;
+import org.rollenspiel.entity.Monster;
+import org.rollenspiel.entity.PC;
+import org.rollenspiel.entity.Queen;
+import org.rollenspiel.weapon.BestialFighting;
+import org.rollenspiel.weapon.BowAndArrow;
+import org.rollenspiel.weapon.Sword;
+
 public class RolePlayingGame {
     
     public static void main(String[] args) {
-        // Create weapons
-        Sword shortSword = new Sword(0);
+		Sword shortSword = new Sword(0);
         Sword longSword = new Sword(2);
         BowAndArrow bow = new BowAndArrow();
         BestialFighting bestialFighting = new BestialFighting();
-        // MagicWand is automatically created in the Queen class
-        
-        // Create player characters
-        System.out.println("Creating player characters...");
-        
-        // Create a regular PC
-        PC regularPC = new PC("Regular Player");
+
+		System.out.println("Creating player characters...");
+
+		PC regularPC = new PC("Regular Player");
         regularPC.addWeapon(shortSword);
         regularPC.addWeapon(bow);
         regularPC.changeWeapon(shortSword);
-        
-        // Create a fighter
-        Fighter fighter = new Fighter("Strong Fighter");
+
+		Fighter fighter = new Fighter("Strong Fighter");
         fighter.addWeapon(longSword);
         fighter.addWeapon(bestialFighting);
         fighter.changeWeapon(longSword);
-        
-        // Create a knight
-        Knight knight = new Knight("Noble Knight");
+
+		Knight knight = new Knight("Noble Knight");
         knight.addWeapon(longSword);
         knight.addWeapon(shortSword);
         knight.changeWeapon(longSword);
-        
-        // Create a king
-        King king = new King("Royal King");
+
+		King king = new King("Royal King");
         king.addWeapon(longSword);
         king.addWeapon(bow);
         king.changeWeapon(longSword);
-        
-        // Create a queen with magic talent
-        Queen queen = new Queen("Magical Queen", 2.5);
+
+		Queen queen = new Queen("Magical Queen", 2.5);
         queen.addWeapon(shortSword);
-        
-        // Create monsters
-        System.out.println("\nCreating monsters...");
+
+		System.out.println("\nCreating monsters...");
         Monster goblin = new Monster("Goblin");
         Monster troll = new Monster("Troll");
         Monster dragon = new Monster("Dragon");
-        
-        // Add all characters to lists
-        List<PC> players = new ArrayList<>();
+
+		List<PC> players = new ArrayList<>();
         players.add(regularPC);
         players.add(fighter);
         players.add(knight);
         players.add(king);
         players.add(queen);
         
-        List<Character> enemies = new ArrayList<>();
+        List<org.rollenspiel.entity.Character> enemies = new ArrayList<>();
         enemies.add(goblin);
         enemies.add(troll);
         enemies.add(dragon);
-        
-        // Display initial status
-        System.out.println("\n----- INITIAL STATUS -----");
+
+		System.out.println("\n----- INITIAL STATUS -----");
         System.out.println("Players:");
         for (PC player : players) {
             System.out.println(player);
@@ -77,23 +74,18 @@ public class RolePlayingGame {
         for (Character enemy : enemies) {
             System.out.println(enemy);
         }
-        
-        // Create combat round
-        CombatRound combatRound = new CombatRound();
-        
-        // Execute first combat round
-        combatRound.executeCombatRound(players, enemies);
-        
-        // Change weapons for some characters
-        System.out.println("\n----- CHANGING WEAPONS -----");
+
+		CombatRound combatRound = new CombatRound();
+
+		combatRound.executeCombatRound(players, enemies);
+
+		System.out.println("\n----- CHANGING WEAPONS -----");
         regularPC.changeWeapon(bow);
         fighter.changeWeapon(bestialFighting);
-        
-        // Execute second combat round
-        combatRound.executeCombatRound(players, enemies);
-        
-        // Fight to the death between two characters
-        System.out.println("\n===== DUEL TO THE DEATH =====");
+
+		combatRound.executeCombatRound(players, enemies);
+
+		System.out.println("\n===== DUEL TO THE DEATH =====");
         Knight challenger = new Knight("Challenger Knight");
         challenger.addWeapon(longSword);
         challenger.changeWeapon(longSword);
@@ -105,9 +97,8 @@ public class RolePlayingGame {
         int roundCount = 1;
         while (challenger.isAlive() && boss.isAlive()) {
             System.out.println("\n----- DUEL ROUND " + roundCount + " -----");
-            
-            // Challenger attacks boss
-            System.out.println("\n" + challenger.getName() + " attacks " + boss.getName());
+
+			System.out.println("\n" + challenger.getName() + " attacks " + boss.getName());
             int attackValue = challenger.attack();
             int defenseValue = boss.defend();
             
@@ -118,9 +109,8 @@ public class RolePlayingGame {
             } else {
                 System.out.println(boss.getName() + " successfully defends the attack!");
             }
-            
-            // If boss is still alive, boss attacks challenger
-            if (boss.isAlive()) {
+
+			if (boss.isAlive()) {
                 System.out.println("\n" + boss.getName() + " attacks " + challenger.getName());
                 attackValue = boss.attack();
                 defenseValue = challenger.defend();
@@ -136,9 +126,8 @@ public class RolePlayingGame {
             
             roundCount++;
         }
-        
-        // Announce the winner
-        System.out.println("\n----- DUEL RESULT -----");
+
+		System.out.println("\n----- DUEL RESULT -----");
         if (challenger.isAlive()) {
             System.out.println(challenger.getName() + " wins the duel!");
         } else {
