@@ -23,6 +23,7 @@
         <module>modules/temperatur</module>
         <module>modules/threads</module>
         <module>modules/wetter-gui</module>
+        <module>modules/duck-sim</module>
     </modules>
 
     <properties>
