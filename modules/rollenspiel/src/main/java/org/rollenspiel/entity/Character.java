@@ -3,11 +3,17 @@ package org.rollenspiel.entity;
 import org.rollenspiel.CloseCombat;
 import org.rollenspiel.weapon.interfaces.WeaponStrategy;
 
+import lombok.Getter;
+import lombok.Setter;
+
 public abstract class Character {
-    private final String name;
-    private int healthPoints;
+    @Getter
+	private final String name;
+    @Getter
+	private int healthPoints;
     private static final int MAX_HEALTH = 20;
-    public WeaponStrategy weaponStrategy;
+    @Setter
+	public WeaponStrategy weaponStrategy;
     
     public Character(String name) {
         this.name = name;
@@ -32,20 +38,8 @@ public abstract class Character {
     public boolean isAlive() {
         return healthPoints > 0;
     }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public int getHealthPoints() {
-        return healthPoints;
-    }
-    
-    public void setWeaponStrategy(WeaponStrategy strategy) {
-        this.weaponStrategy = strategy;
-    }
-    
-    @Override
+
+	@Override
     public String toString() {
         return name + " (HP: " + healthPoints + ", Weapon: " + weaponStrategy + ")";
     }

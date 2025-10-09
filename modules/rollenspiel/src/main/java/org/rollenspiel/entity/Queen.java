@@ -20,9 +20,8 @@ public class Queen extends PC {
     
     @Override
     public int attack() {
-        if (weaponStrategy instanceof MagicWand) {
-			MagicWand wand = (MagicWand) weaponStrategy;
-            return wand.attack(magicTalent);
+        if (weaponStrategy instanceof MagicWand wand) {
+			return wand.attack(magicTalent);
         } else {
 			return super.attack();
         }
@@ -30,9 +29,8 @@ public class Queen extends PC {
     
     @Override
     public int defend() {
-        if (weaponStrategy instanceof MagicWand) {
-			MagicWand wand = (MagicWand) weaponStrategy;
-            return wand.defend(magicTalent);
+        if (weaponStrategy instanceof MagicWand wand) {
+			return wand.defend(magicTalent);
         } else {
 			return super.defend();
         }

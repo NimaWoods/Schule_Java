@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/modules/beziehungen-vererbung/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/beziehungen-vererbung/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/duck-sim/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/duck-sim/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/example/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/example/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/interfaced/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/interfaced/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/kfz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/kfz/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/kontrollstrukturen1-verzweigungen/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/kontrollstrukturen1-verzweigungen/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/kreis-und-rechteck/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/kreis-und-rechteck/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/legostadt/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/legostadt/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/materialpreis/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/materialpreis/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/mitarbeiter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/mitarbeiter/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/rollenspiel/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/rollenspiel/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/temperatur/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/temperatur/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/threads/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/threads/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/wetter-gui/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/wetter-gui/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
