@@ -7,6 +7,23 @@
     <groupId>org.example</groupId>
     <artifactId>Schule</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>modules/beziehungen-vererbung</module>
+        <module>modules/kreis-und-rechteck</module>
+        <module>modules/materialpreis</module>
+        <module>modules/mitarbeiter</module>
+        <module>modules/example</module>
+        <module>modules/interfaced</module>
+        <module>modules/kfz</module>
+        <module>modules/kontrollstrukturen1-verzweigungen</module>
+        <module>modules/legostadt</module>
+        <module>modules/rollenspiel</module>
+        <module>modules/temperatur</module>
+        <module>modules/threads</module>
+        <module>modules/wetter-gui</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
