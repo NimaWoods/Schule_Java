@@ -20,7 +20,9 @@
         <module>modules/kontrollstrukturen1-verzweigungen</module>
         <module>modules/legostadt</module>
         <module>modules/rollenspiel</module>
+        <module>modules/sequenzdiagramme</module>
         <module>modules/temperatur</module>
+        <module>modules/template_methode_pattern</module>
         <module>modules/threads</module>
         <module>modules/wetter-gui</module>
         <module>modules/duck-sim</module>
