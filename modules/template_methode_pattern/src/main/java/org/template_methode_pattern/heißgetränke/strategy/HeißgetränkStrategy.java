@@ -1,17 +1,23 @@
 package org.template_methode_pattern.heißgetränke.strategy;
 
-abstract class HeißgetränkStrategy {
+public abstract class HeißgetränkStrategy {
 
 	public HeißgetränkStrategy() {
-		wasserKochen();
-		zubereiten();
-		einfüllen();
-		topping();
 	}
 
-	protected void wasserKochen() {}
-	protected void zubereiten() {}
-	protected void einfüllen() {}
-	protected void topping() {}
+	public final void zubereiten() {
+		wasserKochen();
+		geschmack();
+		eingießen();
+		zusätze();
+	}
+	protected void wasserKochen() {
+		System.out.println("Wasser Kochen");
+	}
+	protected void geschmack() {}
+	protected void eingießen() {
+		System.out.println("Eingießen");
+	}
+	protected void zusätze() {}
 
 }
