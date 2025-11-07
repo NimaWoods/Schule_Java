@@ -78,7 +78,7 @@ public class CombatRound {
             System.out.println(defender.getName() + " successfully defends the attack!");
         }
     }
-    
+
     private org.rollenspiel.entity.Character findLivingTarget(List<org.rollenspiel.entity.Character> targets) {
         for (Character target : targets) {
             if (target.isAlive()) {

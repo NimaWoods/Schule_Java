@@ -1,6 +1,6 @@
-package org.tagesablauf.entity.erwärbstätige;
+package org.template_methode_pattern.tagesablauf.entity.erwärbstätige;
 
-import org.tagesablauf.entity.Erwerbstätige;
+import org.template_methode_pattern.tagesablauf.entity.Erwerbstätige;
 
 public class Manager extends Erwerbstätige {
 

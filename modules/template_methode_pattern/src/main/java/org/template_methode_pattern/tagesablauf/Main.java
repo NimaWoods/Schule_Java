@@ -1,10 +1,10 @@
-package org.tagesablauf;
+package org.template_methode_pattern.tagesablauf;
 
-import org.tagesablauf.entity.erwärbstätige.Büroarbeiter;
-import org.tagesablauf.entity.Erwerbstätige;
-import org.tagesablauf.entity.erwärbstätige.Manager;
-import org.tagesablauf.entity.erwärbstätige.schichtarbeiter.Postboten;
-import org.tagesablauf.entity.erwärbstätige.schichtarbeiter.Waldarbeiter;
+import org.template_methode_pattern.tagesablauf.entity.erwärbstätige.Büroarbeiter;
+import org.template_methode_pattern.tagesablauf.entity.Erwerbstätige;
+import org.template_methode_pattern.tagesablauf.entity.erwärbstätige.Manager;
+import org.template_methode_pattern.tagesablauf.entity.erwärbstätige.schichtarbeiter.Postboten;
+import org.template_methode_pattern.tagesablauf.entity.erwärbstätige.schichtarbeiter.Waldarbeiter;
 
 public class Main {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package org.tagesablauf.entity;
+package org.template_methode_pattern.tagesablauf.entity;
 
 public abstract class Erwerbstätige {
 
