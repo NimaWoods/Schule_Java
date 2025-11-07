@@ -1,6 +1,6 @@
 package org.rollenspiel.entity;
 
-import org.rollenspiel.CloseCombat;
+import org.rollenspiel.weapon.CloseCombat;
 
 public class Monster extends Character {
     

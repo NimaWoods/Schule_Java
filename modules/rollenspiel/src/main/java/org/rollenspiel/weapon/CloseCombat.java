@@ -1,4 +1,4 @@
-package org.rollenspiel;
+package org.rollenspiel.weapon;
 
 import java.util.Random;
 

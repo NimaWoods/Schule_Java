@@ -58,29 +58,41 @@ classDiagram
 
     class Sword {
         -int length
+        -Random random
         +Sword(int length)
         +attack() int
         +defend() int
+        +toString() String
     }
 
     class BowAndArrow {
+        -Random random
         +attack() int
         +defend() int
+        +toString() String
     }
 
     class CloseCombat {
+        -Random random
         +attack() int
         +defend() int
+        +toString() String
     }
 
     class BestialFighting {
+        -Random random
         +attack() int
         +defend() int
+        +toString() String
     }
 
     class MagicWand {
+        -Random random
+        +attack() int
         +attack(double talent) int
+        +defend() int
         +defend(double talent) int
+        +toString() String
     }
 
     class CombatRound {
