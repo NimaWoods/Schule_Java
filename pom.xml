@@ -26,6 +26,8 @@
         <module>modules/threads</module>
         <module>modules/wetter-gui</module>
         <module>modules/duck-sim</module>
+        <module>modules/fernbedienung</module>
+        <module>modules/minesweeper</module>
     </modules>
 
     <properties>
