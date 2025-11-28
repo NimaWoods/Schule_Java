@@ -13,7 +13,9 @@ public class MineSweeperGame {
     MineSweeperGUI mineSweeperGUI;
 
     public MineSweeperGame() {
-        mineSweeperGUI = new MineSweeperGUI();
+        MineSweeperLogic logic = new MineSweeperLogic();
+
+        mineSweeperGUI = new MineSweeperGUI(logic);
     }
 
 }

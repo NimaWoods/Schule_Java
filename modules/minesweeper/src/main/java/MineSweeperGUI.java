@@ -1,49 +1,108 @@
-
-
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-
 import javax.swing.*;
 
 public class MineSweeperGUI extends JFrame {
 
-    MineSweeperLogic logic;
-    JPanel bodyPanel;
+    private final MineSweeperLogic logic;
+    private JPanel bodyPanel;
 
-    public MineSweeperGUI() {
+    public MineSweeperGUI(MineSweeperLogic logic) {
+        this.logic = logic;
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(800,600);
+        setSize(800, 600);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        setVisible(true);
         setLayout(new BorderLayout());
 
         add(getHeaderPanel(), BorderLayout.NORTH);
 
-        bodyPanel = getBodyPanel();
-        add(bodyPanel, BorderLayout.SOUTH);
+        bodyPanel = new JPanel();
+        add(bodyPanel, BorderLayout.CENTER);
+
+        setVisible(true);
     }
 
-    private static JPanel getHeaderPanel() {
-        JPanel header = new JPanel();
+    private JPanel getHeaderPanel() {
+        JTextField gridSelectionInput = new JTextField(10);
 
-        JTextField gridSelection = new JTextField();
-        gridSelection.setSize(100,100);
-        header.add(gridSelection);
+        JLabel errorMessage = new JLabel();
 
-        JButton startGameButton = new JButton();
-        startGameButton.setText("Test");
+        JButton startGameButton = getStartGameButton(gridSelectionInput, errorMessage);
+        JButton resetButton = new JButton();
+        resetButton.setText("Reset");
+        resetButton.addActionListener(event -> {
+            bodyPanel.removeAll();
+            bodyPanel.setLayout(new GridLayout());
+            bodyPanel.revalidate();
+            bodyPanel.repaint();
+        });
+
+        JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        header.add(gridSelectionInput);
         header.add(startGameButton);
+        header.add(errorMessage);
+        header.add(resetButton);
+
         return header;
     }
 
-    private static JPanel getBodyPanel() {
-        JPanel body = new JPanel(new GridLayout());
-        return body;
+    private JButton getStartGameButton(JTextField gridSelectionInput, JLabel errorMessage) {
+        JButton startGameButton = new JButton("Start");
+        startGameButton.addActionListener(event -> {
+            try {
+                int size;
+                try {
+                    size = Integer.parseInt(gridSelectionInput.getText());
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Keine Nummer", e);
+                }
+                logic.setup(size);
+                createBoard();
+            } catch (Exception e) {
+                errorMessage.setText(e.getMessage());
+            }
+        });
+        return startGameButton;
     }
 
-    public void setLogic(MineSweeperLogic logic) {
-        this.logic = logic;
+    private void createBoard() {
+        bodyPanel.removeAll();
+        int size = logic.getSize();
+        bodyPanel.setLayout(new GridLayout(size, size));
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                JButton cellButton = new JButton();
+
+                int finalRow = row;
+                int finalCol = col;
+
+                cellButton.addActionListener(e -> {
+                    String result = logic.revealCell(finalRow, finalCol);
+                    cellButton.setText(result);
+                    cellButton.setEnabled(false);
+
+                    if (logic.isGameOver(finalRow, finalCol)) {
+                        JOptionPane.showMessageDialog(this, "Game Over!");
+                    }
+                });
+
+                cellButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mousePressed(java.awt.event.MouseEvent evt) {
+                        if (SwingUtilities.isRightMouseButton(evt)) {
+                            logic.toggleFlag(finalRow, finalCol);
+                            cellButton.setText(logic.isFlagged(finalRow, finalCol) ? "🚩" : "");
+                        }
+                    }
+                });
+
+                bodyPanel.add(cellButton);
+            }
+        }
+
+        bodyPanel.revalidate();
+        bodyPanel.repaint();
     }
 }
