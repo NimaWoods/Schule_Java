@@ -24,10 +24,30 @@ public class MineSweeperGUI extends JFrame {
 
     private JPanel getHeaderPanel() {
         JTextField gridSelectionInput = new JTextField(10);
-
         JLabel errorMessage = new JLabel();
-
         JButton startGameButton = getStartGameButton(gridSelectionInput, errorMessage);
+
+        JButton undoButton = new JButton();
+        undoButton.setText("Undo");
+
+        JButton redoButton = new JButton();
+        redoButton.setText("Redo");
+
+        JButton resetButton = getResetButton();
+
+        JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT));
+
+        header.add(gridSelectionInput);
+        header.add(startGameButton);
+        header.add(resetButton);
+        header.add(undoButton);
+        header.add(redoButton);
+        header.add(errorMessage);
+
+        return header;
+    }
+
+    private JButton getResetButton() {
         JButton resetButton = new JButton();
         resetButton.setText("Reset");
         resetButton.addActionListener(event -> {
@@ -36,15 +56,7 @@ public class MineSweeperGUI extends JFrame {
             bodyPanel.revalidate();
             bodyPanel.repaint();
         });
-
-        JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT));
-
-        header.add(gridSelectionInput);
-        header.add(startGameButton);
-        header.add(errorMessage);
-        header.add(resetButton);
-
-        return header;
+        return resetButton;
     }
 
     private JButton getStartGameButton(JTextField gridSelectionInput, JLabel errorMessage) {
@@ -82,6 +94,8 @@ public class MineSweeperGUI extends JFrame {
                     String result = logic.revealCell(finalRow, finalCol);
                     cellButton.setText(result);
                     cellButton.setEnabled(false);
+
+                    logic.addToHistory(finalRow, finalCol);
 
                     if (logic.isGameOver(finalRow, finalCol)) {
                         JOptionPane.showMessageDialog(this, "Game Over!");

@@ -1,8 +1,7 @@
 
 
+import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.JOptionPane;
 
 public class MineSweeperLogic {
 	private static final int MINSIZE = 10;
@@ -10,6 +9,8 @@ public class MineSweeperLogic {
 	private int size;
 	private int[][] board;
     private boolean[][] flagged;
+    private ArrayList<int[]> moves;
+    private ArrayList<int[]> undos;
 
     public void setup(int size) throws IllegalArgumentException {
 
@@ -80,6 +81,10 @@ public class MineSweeperLogic {
         }
     }
 
+    public void addToHistory(int row, int col) {
+        moves.add(new int[]{row, col});
+    }
+
     public void toggleFlag(int row, int col) {
         flagged[row][col] = !flagged[row][col];
     }
@@ -94,5 +99,16 @@ public class MineSweeperLogic {
 
     public boolean isBomb(int row, int col) {
         return board[row][col] == 9;
+    }
+
+    public void undo() {
+        if (!moves.isEmpty()) {
+            int[] lastMove = moves.remove(moves.size() - 1);
+            undos.add(lastMove);
+        }
+    }
+
+    public void redo() {
+        int[] lastMove = undos.remove(undos.size() - 1);
     }
 }
