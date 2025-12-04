@@ -1,6 +1,8 @@
 /**
  * MineSweeper App
  *
+ * @Author Niklas Fabritzius
+ *
  */
 public class App
 {
