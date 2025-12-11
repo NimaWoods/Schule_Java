@@ -37,12 +37,14 @@ public class MineSweeperGUI extends JFrame {
         undoButton.setText("Undo");
         undoButton.addActionListener(e -> {
             logic.undo();
+            refreshBoard();
         });
 
         JButton redoButton = new JButton();
         redoButton.setText("Redo");
         redoButton.addActionListener(e -> {
             logic.redo();
+            refreshBoard();
         });
 
         JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -126,5 +128,28 @@ public class MineSweeperGUI extends JFrame {
             }
         }
     }
+
+    private void refreshBoard() {
+        Component[] comps = bodyPanel.getComponents();
+        int size = logic.getSize();
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                JButton btn = (JButton) comps[row * size + col];
+
+                if (logic.isRevealed(row, col)) {
+                    btn.setText(logic.revealCell(row, col));
+                    btn.setEnabled(false);
+                } else if (logic.isFlagged(row, col)) {
+                    btn.setText("🚩");
+                    btn.setEnabled(true);
+                } else {
+                    btn.setText("");
+                    btn.setEnabled(true);
+                }
+            }
+        }
+    }
+
 
 }
