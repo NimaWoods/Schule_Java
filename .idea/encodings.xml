@@ -3,6 +3,8 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/modules/beziehungen-vererbung/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/beziehungen-vererbung/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/decorator/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/modules/decorator/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/duck-sim/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/duck-sim/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/modules/example/src/main/java" charset="UTF-8" />
