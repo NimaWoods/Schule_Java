@@ -9,8 +9,8 @@ public class MineSweeperLogic {
 	private int size;
 	private int[][] board;
     private boolean[][] flagged;
-    private ArrayList<int[]> moves;
-    private ArrayList<int[]> undos;
+    private final ArrayList<int[]> moves = new ArrayList<>();
+    private final ArrayList<int[]> undos = new ArrayList<>();
 
     public void setup(int size) throws IllegalArgumentException {
 
