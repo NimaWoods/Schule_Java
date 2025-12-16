@@ -9,8 +9,9 @@ public class MineSweeperLogic {
 	private int size;
 	private int[][] board;
     private boolean[][] flagged;
-    private ArrayList<int[]> moves;
-    private ArrayList<int[]> undos;
+    private boolean[][] revealed;
+    private final ArrayList<int[]> moves = new ArrayList<>();
+    private final ArrayList<int[]> undos = new ArrayList<>();
 
     public void setup(int size) throws IllegalArgumentException {
 
@@ -30,6 +31,7 @@ public class MineSweeperLogic {
         calculateNeighbours();
 
         flagged = new boolean[size][size];
+        revealed = new boolean[size][size];
     }
 
     protected void placeBombs() {
@@ -71,18 +73,17 @@ public class MineSweeperLogic {
 	}
 
     public String revealCell(int row, int col) {
+        revealed[row][col] = true;
+
         int value = board[row][col];
-        if (value == 9) {
-            return "💣"; // Bombe
-        } else if (value == 0) {
-            return "";   // leeres Feld
-        } else {
-            return String.valueOf(value); // Zahl
-        }
+        if (value == 9) return "💣";
+        if (value == 0) return "";
+        return String.valueOf(value);
     }
 
     public void addToHistory(int row, int col) {
         moves.add(new int[]{row, col});
+        undos.clear();
     }
 
     public void toggleFlag(int row, int col) {
@@ -102,13 +103,32 @@ public class MineSweeperLogic {
     }
 
     public void undo() {
-        if (!moves.isEmpty()) {
-            int[] lastMove = moves.remove(moves.size() - 1);
-            undos.add(lastMove);
-        }
+        if (moves.isEmpty())
+            return;
+
+        int[] move = moves.remove(moves.size() - 1);
+        int row = move[0];
+        int col = move[1];
+
+        revealed[row][col] = false;  // Feld wieder verstecken
+
+        undos.add(move);
     }
 
     public void redo() {
-        int[] lastMove = undos.remove(undos.size() - 1);
+        if (undos.isEmpty())
+            return;
+
+        int[] move = undos.remove(undos.size() - 1);
+        int row = move[0];
+        int col = move[1];
+
+        revealed[row][col] = true;
+
+        moves.add(move);
+    }
+
+    public boolean isRevealed(int row, int col) {
+        return revealed[row][col];
     }
 }

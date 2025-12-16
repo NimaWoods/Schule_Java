@@ -4,10 +4,16 @@ import javax.swing.*;
 public class MineSweeperGUI extends JFrame {
 
     private final MineSweeperLogic logic;
-    private JPanel bodyPanel;
+    private final JPanel bodyPanel;
 
     public MineSweeperGUI(MineSweeperLogic logic) {
         this.logic = logic;
+
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage(), e);
+        }
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(800, 600);
@@ -29,34 +35,27 @@ public class MineSweeperGUI extends JFrame {
 
         JButton undoButton = new JButton();
         undoButton.setText("Undo");
+        undoButton.addActionListener(e -> {
+            logic.undo();
+            refreshBoard();
+        });
 
         JButton redoButton = new JButton();
         redoButton.setText("Redo");
-
-        JButton resetButton = getResetButton();
+        redoButton.addActionListener(e -> {
+            logic.redo();
+            refreshBoard();
+        });
 
         JPanel header = new JPanel(new FlowLayout(FlowLayout.LEFT));
 
         header.add(gridSelectionInput);
         header.add(startGameButton);
-        header.add(resetButton);
         header.add(undoButton);
         header.add(redoButton);
         header.add(errorMessage);
 
         return header;
-    }
-
-    private JButton getResetButton() {
-        JButton resetButton = new JButton();
-        resetButton.setText("Reset");
-        resetButton.addActionListener(event -> {
-            bodyPanel.removeAll();
-            bodyPanel.setLayout(new GridLayout());
-            bodyPanel.revalidate();
-            bodyPanel.repaint();
-        });
-        return resetButton;
     }
 
     private JButton getStartGameButton(JTextField gridSelectionInput, JLabel errorMessage) {
@@ -98,6 +97,7 @@ public class MineSweeperGUI extends JFrame {
                     logic.addToHistory(finalRow, finalCol);
 
                     if (logic.isGameOver(finalRow, finalCol)) {
+                        disableAllCells();
                         JOptionPane.showMessageDialog(this, "Game Over!");
                     }
                 });
@@ -119,4 +119,37 @@ public class MineSweeperGUI extends JFrame {
         bodyPanel.revalidate();
         bodyPanel.repaint();
     }
+
+    private void disableAllCells() {
+        for (Component comp : bodyPanel.getComponents()) {
+            if (comp instanceof JButton) {
+                JButton btn = (JButton) comp;
+                btn.setEnabled(false);
+            }
+        }
+    }
+
+    private void refreshBoard() {
+        Component[] comps = bodyPanel.getComponents();
+        int size = logic.getSize();
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                JButton btn = (JButton) comps[row * size + col];
+
+                if (logic.isRevealed(row, col)) {
+                    btn.setText(logic.revealCell(row, col));
+                    btn.setEnabled(false);
+                } else if (logic.isFlagged(row, col)) {
+                    btn.setText("🚩");
+                    btn.setEnabled(true);
+                } else {
+                    btn.setText("");
+                    btn.setEnabled(true);
+                }
+            }
+        }
+    }
+
+
 }
