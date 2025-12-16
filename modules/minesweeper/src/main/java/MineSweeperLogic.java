@@ -131,4 +131,11 @@ public class MineSweeperLogic {
     public boolean isRevealed(int row, int col) {
         return revealed[row][col];
     }
+    
+    public String getCellContent(int row, int col) {
+        int value = board[row][col];
+        if (value == 9) return "💣";
+        if (value == 0) return "";
+        return String.valueOf(value);
+    }
 }

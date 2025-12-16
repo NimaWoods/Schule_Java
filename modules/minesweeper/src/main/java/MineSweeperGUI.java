@@ -98,6 +98,7 @@ public class MineSweeperGUI extends JFrame {
 
                     if (logic.isGameOver(finalRow, finalCol)) {
                         disableAllCells();
+                        revealAllCells();
                         JOptionPane.showMessageDialog(this, "Game Over!");
                     }
                 });
@@ -118,6 +119,18 @@ public class MineSweeperGUI extends JFrame {
 
         bodyPanel.revalidate();
         bodyPanel.repaint();
+    }
+
+    private void revealAllCells() {
+        Component[] comps = bodyPanel.getComponents();
+        int size = logic.getSize();
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                JButton btn = (JButton) comps[row * size + col];
+                btn.setText(logic.getCellContent(row, col));
+            }
+        }
     }
 
     private void disableAllCells() {
